@@ -67,7 +67,7 @@ In the final TrustFed-Sec round, the saved weights for clients 1–5 are 0.0316,
 
 ## Screenshots
 
-No screenshot is bundled. See [docs/screenshots/README.md](docs/screenshots/README.md) for suggested real captures. Do not substitute an illustration for experimental evidence.
+Two real captures from the default synthetic run are in `docs/screenshots/`: the three-arm comparison and the TrustFed-Sec client inspection at round 10. Measured values are in `results/`. See [docs/screenshots/README.md](docs/screenshots/README.md) for the capture settings.
 
 ## Team contributions
 

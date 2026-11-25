@@ -1,3 +1,8 @@
 # Screenshots
 
-No screenshots are included. Add real, reviewed screenshots here after removing any sensitive information. Suggested captures: the three scenario comparison table and the TrustFed-Sec client inspection showing round, trust and aggregation weights. Preserve original screenshots separately. The synthetic JSON records in `results/` contain the measured values used in the README.
+Two real captures from the default synthetic run (seed 42, five IID clients, two compromised clients, sign-flip multiplier 5, ten rounds):
+
+- `abc_comparison.jpg` — the held-out test table and validation trajectories for all three arms.
+- `client_inspection.jpg` — TrustFed-Sec at round 10: trust, review status and aggregation weight per client.
+
+They are browser screenshots of this app, not illustrations. The numbers shown come from the synthetic JSON records in `results/`. Screenshots are not an external benchmark.
