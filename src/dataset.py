@@ -11,7 +11,9 @@ LEAKAGE = {'id', 'attack_cat', 'label', 'srcip', 'dstip', 'sport', 'dsport', 'so
 
 def prepare(config, files=None):
     if files:
-        frames = [pd.read_csv(f, low_memory=False) for f in files]
+        # utf-8-sig strips the BOM shipped on the official CSVs, otherwise the
+        # first header becomes '\ufeffid' and the leakage filter misses it.
+        frames = [pd.read_csv(f, low_memory=False, encoding='utf-8-sig') for f in files]
         df = pd.concat(frames, ignore_index=True)
         df.columns = [str(c).strip().lower() for c in df.columns]
         if 'label' not in df.columns:
@@ -28,6 +30,10 @@ def prepare(config, files=None):
         X = pd.DataFrame(x, columns=[f'feature_{i}' for i in range(x.shape[1])])
         source = 'Synthetic demonstration data'
     if len(np.unique(y)) != 2: raise ValueError('Dataset must contain both binary classes.')
+    if getattr(config, 'max_rows', None) and len(y) > config.max_rows:
+        chosen = np.random.default_rng(config.seed).choice(len(y), config.max_rows, replace=False)
+        X = X.iloc[chosen].reset_index(drop=True)
+        y = y[chosen]
     idx = np.arange(len(y))
     train, hold = train_test_split(idx, test_size=0.30, stratify=y, random_state=config.seed)
     val, test = train_test_split(hold, test_size=0.5, stratify=y[hold], random_state=config.seed)

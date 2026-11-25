@@ -29,6 +29,13 @@ def test_data_and_reproducibility(tmp_path):
     assert x['history']==y['history'] and x['clients']==y['clients'] and x['test']==y['test']
     with pytest.raises(FileNotFoundError): prepare(cfg,[tmp_path/'missing.csv'])
 
+def test_max_rows_subsamples_deterministically():
+    cfg = Config(max_rows=1000)
+    a = prepare(cfg); b = prepare(cfg)
+    assert a['samples'] == 1000
+    assert all(np.array_equal(x, y) for x, y in zip(a['parts'], b['parts']))
+
+
 def test_poisoned_conditions_identical():
     cfg=Config(rounds=2,attack='label flip'); data=prepare(cfg)
     a=run(data,cfg,'Poisoned FedAvg'); b=run(data,cfg,'TrustFed-Sec')

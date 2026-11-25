@@ -28,3 +28,7 @@ results/*.json
 !results/20261123_001708_058795_Normal_FedAvg.json
 !results/20261123_001821_686999_Poisoned_FedAvg.json
 !results/20261123_002047_331098_TrustFed-Sec.json
+!results/benchmark_summary.json
+!results/bench_constrain.json
+!results/bench_adaptive.json
+!results/bench_unsw.json

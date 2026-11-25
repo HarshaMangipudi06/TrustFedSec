@@ -6,7 +6,7 @@ import plotly.express as px
 import streamlit as st
 from config import Config
 from src.dataset import prepare
-from src.coordinator import run
+from src.coordinator import run, SCENARIOS
 
 st.set_page_config(page_title='TrustFed-Sec', page_icon='·', layout='wide')
 
@@ -61,7 +61,7 @@ with st.sidebar:
     n = st.slider('Clients', 2, 10, 5)
     bad = st.slider('Compromised clients', 0, n, min(2,n))
     st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
-    attack = st.selectbox('Attack type', ['sign flip', 'label flip'])
+    attack = st.selectbox('Attack type', ['sign flip', 'label flip', 'constrain and scale', 'cosine adaptive'])
     strength = st.slider('Sign-flip multiplier', 0.0, 15.0, 5.0, 0.5)
     fraction = st.slider('Label poisoning fraction', 0.0, 1.0, 0.5, 0.05)
     rounds = st.slider('Communication rounds', 1, 30, 10)
@@ -73,6 +73,8 @@ with st.sidebar:
         cosine = st.slider('Cosine threshold', -0.5, 0.9, 0.2, 0.1)
         val = st.slider('Validation loss threshold', 0.005, 0.2, 0.02, 0.005, format='%.3f')
         floor = st.slider('Minimum trust weight', 0.01, 0.5, 0.1, 0.01)
+        budget = st.slider('Max FPR rise per round (guard arm)', 0.0, 0.10, 0.02, 0.005)
+        adaptive = st.slider('Adaptive attack harmful fraction', 0.0, 0.30, 0.05, 0.01)
     if st.button('Reset results', use_container_width=True):
         st.session_state.pop('results', None); st.rerun()
 
@@ -80,7 +82,7 @@ dataset_tag = 'SYNTHETIC DATA' if not dataset.startswith('Local') else 'USER-SUP
 st.markdown(f'''<div class="brand"><div class="mark">TF</div><div><div class="brand-name">TrustFed-Sec</div><div class="brand-sub">Federated intrusion detection · local simulation</div></div><div class="pill">{dataset_tag}</div></div>''', unsafe_allow_html=True)
 st.markdown('<div class="note">Five clients train the same logistic model. One or two send poisoned updates. The coordinator looks at each update, checks it against a clean validation set, and changes how much that client counts. This does not monitor real traffic.</div>', unsafe_allow_html=True)
 
-cfg = Config(seed=int(seed),clients=n,compromised=bad,attack=attack,strength=strength,poison_fraction=fraction,rounds=rounds,partition=partition,beta=beta,norm_threshold=norm,cosine_threshold=cosine,validation_threshold=val,trust_floor=floor)
+cfg = Config(seed=int(seed),clients=n,compromised=bad,attack=attack,strength=strength,poison_fraction=fraction,rounds=rounds,partition=partition,beta=beta,norm_threshold=norm,cosine_threshold=cosine,validation_threshold=val,trust_floor=floor,fpr_budget=budget,adaptive_fraction=adaptive)
 file_data = [(f.name, f.getvalue()) for f in files]
 key = hashlib.sha256((repr(cfg)+dataset).encode()+b''.join(name.encode()+content for name,content in file_data)).hexdigest()
 if 'results' not in st.session_state: st.session_state.results = {}
@@ -88,19 +90,20 @@ current = st.session_state.results.get(key, {})
 if st.session_state.results and not current: st.warning('Settings or dataset changed. Previous results are hidden to prevent comparisons across configurations.')
 
 section('01', 'Run scenarios')
-st.caption('One run = one data split, one partition, one starting model. The three arms use the same compromised clients and the same attack.')
+st.caption('One run = one data split, one partition, one starting model. All four arms use the same compromised clients and the same attack. Arm D adds an FPR budget on top of arm C.')
 buttons = st.columns(4)
+short_names = ['Clean FedAvg','Poisoned FedAvg','TrustFed-Sec','Trust + FPR guard']
 selected = None
-for col, name in zip(buttons, ['Normal FedAvg','Poisoned FedAvg','TrustFed-Sec']):
-    if col.button('Run '+name, use_container_width=True): selected=name
-if buttons[3].button('Run all three (A/B/C)', type='primary', use_container_width=True): selected='ALL'
+for col, name, label in zip(buttons, SCENARIOS, short_names):
+    if col.button('Run '+label, use_container_width=True): selected=name
+if st.button('Run all four (A/B/C/D)', type='primary', use_container_width=True): selected='ALL'
 if selected:
     if dataset.startswith('Local') and not files: st.error('Upload at least one CSV containing the binary label column.')
     else:
         try:
             with st.spinner('Preparing data and running rounds…'):
                 data=prepare(cfg, files if files else None)
-                scenarios=[selected] if selected!='ALL' else ['Normal FedAvg','Poisoned FedAvg','TrustFed-Sec']
+                scenarios=[selected] if selected!='ALL' else list(SCENARIOS)
                 progress=st.progress(0, text='Starting'); live=st.empty()
                 for name in scenarios:
                     def update(r, rows, metrics, _name=name):
@@ -142,7 +145,8 @@ if current:
 
     section('03', 'Client inspection')
     c1,c2=st.columns([2,1])
-    with c1: name=st.selectbox('Scenario',list(current),index=list(current).index('TrustFed-Sec') if 'TrustFed-Sec' in current else 0)
+    preferred=next((s for s in ('TrustFed-Sec (FPR guard)','TrustFed-Sec') if s in current), list(current)[0])
+    with c1: name=st.selectbox('Scenario',list(current),index=list(current).index(preferred))
     with c2: round_no=st.select_slider('Round',options=list(range(1,cfg.rounds+1)),value=cfg.rounds)
     result=current[name]
     rows=pd.DataFrame(result['clients']); rows=rows[rows['round']==round_no]
@@ -151,15 +155,18 @@ if current:
     fig.update_layout(height=250,margin=dict(l=10,r=10,t=40,b=10),legend_title_text='',font=dict(size=11))
     fig.update_traces(width=0.55)
     st.plotly_chart(fig,use_container_width=True,theme=None,config=chart_cfg)
-    shown=['client','status','trust','aggregation_weight','cosine','validation_loss_delta','update_norm','candidate_attack_recall','simulated_compromised']
+    shown=['client','status','trust','aggregation_weight','cosine','validation_loss_delta','simulated_compromised']
+    if 'fpr_alpha' in rows.columns: shown.insert(4,'fpr_alpha')
     st.dataframe(rows[shown].round(4),hide_index=True,use_container_width=True,column_config={
         'trust':st.column_config.ProgressColumn('trust',format='%.3f',min_value=0.0,max_value=1.0),
         'aggregation_weight':st.column_config.ProgressColumn('weight',format='percent',min_value=0.0,max_value=1.0),
+        'fpr_alpha':st.column_config.ProgressColumn('kept',format='percent',min_value=0.0,max_value=1.0),
         'simulated_compromised':st.column_config.CheckboxColumn('simulated compromised',disabled=True),
     })
     client=st.selectbox('Explain client',rows['client'].tolist()); row=rows[rows.client==client].iloc[0]
-    st.markdown(f'''<div class="explain">Client <strong>{client}</strong> carries trust <strong>{row['trust']:.3f}</strong> and gets <strong>{row['aggregation_weight']:.1%}</strong> of the update. Its update norm is {row['update_norm']:.3f}, its cosine to the median update is {row['cosine']:.3f}, and trying it on the validation set changed the loss by {row['validation_loss_delta']:+.4f}. Status: <strong>{row['status']}</strong>. A review flag is a signal, not proof of cheating.</div>''', unsafe_allow_html=True)
-    if name != 'TrustFed-Sec': st.caption('In the FedAvg arms those trust values are diagnostic only; aggregation uses sample counts.')
+    guard_note = f" The FPR guard kept {row['fpr_alpha']:.0%} of this update; its validation FPR was {row['candidate_fpr']:.3f}." if 'fpr_alpha' in row else ''
+    st.markdown(f'''<div class="explain">Client <strong>{client}</strong> carries trust <strong>{row['trust']:.3f}</strong> and gets <strong>{row['aggregation_weight']:.1%}</strong> of the update. Its update norm is {row['update_norm']:.3f}, its cosine to the median update is {row['cosine']:.3f}, and trying it on the validation set changed the loss by {row['validation_loss_delta']:+.4f}. Status: <strong>{row['status']}</strong>.{guard_note} A review flag is a signal, not proof of cheating.</div>''', unsafe_allow_html=True)
+    if name not in ('TrustFed-Sec','TrustFed-Sec (FPR guard)'): st.caption('In the FedAvg arms those trust values are diagnostic only; aggregation uses sample counts.')
     st.download_button('Download result JSON',json.dumps(result,indent=2),file_name='trustfed_result.json',mime='application/json')
 else:
     st.markdown('<div class="note">No results yet. Run an arm above, or all three for a side-by-side comparison.</div>', unsafe_allow_html=True)

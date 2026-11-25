@@ -1,0 +1,3126 @@
+{
+  "protocol": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "rounds": 10,
+    "attack": "sign flip",
+    "compromised_by_default": 2,
+    "clients_by_default": 5,
+    "partition": "IID",
+    "source": "user-supplied CSV",
+    "max_rows": 12000,
+    "bootstrap_samples": 1000,
+    "paired_by_seed": true
+  },
+  "means": {
+    "A_clean": {
+      "accuracy": 0.8201111111111113,
+      "false_positive_rate": 0.331988899321279,
+      "macro_f1": 0.7966832784491727,
+      "attack_recall": 0.9055457649554057
+    },
+    "B_poisoned": {
+      "accuracy": 0.2660925925925926,
+      "false_positive_rate": 0.8741721377264582,
+      "macro_f1": 0.24265267660969794,
+      "attack_recall": 0.34494534600894156
+    },
+    "C_trust": {
+      "accuracy": 0.7933148148148147,
+      "false_positive_rate": 0.2874368868696268,
+      "macro_f1": 0.7754474152927958,
+      "attack_recall": 0.8386371343550602
+    },
+    "D_guard": {
+      "accuracy": 0.7573333333333333,
+      "false_positive_rate": 0.1776888224061694,
+      "macro_f1": 0.7501384028744503,
+      "attack_recall": 0.7208789437076404
+    }
+  },
+  "stds": {
+    "A_clean": {
+      "accuracy": 0.012734308869840864,
+      "false_positive_rate": 0.01974159746261656,
+      "macro_f1": 0.013845488614372119,
+      "attack_recall": 0.016095191628186116
+    },
+    "B_poisoned": {
+      "accuracy": 0.012906220456243664,
+      "false_positive_rate": 0.02135807445638725,
+      "macro_f1": 0.012865774785059665,
+      "attack_recall": 0.01468362876042799
+    },
+    "C_trust": {
+      "accuracy": 0.015096879802278305,
+      "false_positive_rate": 0.04097015468592788,
+      "macro_f1": 0.015079283604629323,
+      "attack_recall": 0.0334650141204859
+    },
+    "D_guard": {
+      "accuracy": 0.016136787572330932,
+      "false_positive_rate": 0.050597676049701286,
+      "macro_f1": 0.015354332008235846,
+      "attack_recall": 0.04011352816298917
+    }
+  },
+  "contrasts": {
+    "accuracy": [
+      {
+        "contrast": "B_poisoned - A_clean",
+        "metric": "accuracy",
+        "n_seeds": 30,
+        "delta_mean": -0.5540185185185186,
+        "ci95": [
+          -0.5612454293138348,
+          -0.5467916077232023
+        ],
+        "cohens_dz": -28.625497193977054,
+        "wilcoxon_p": 1.7311263949197288e-06,
+        "paired_t_p": 5.017501803886778e-44,
+        "holm_p": 8.59046465622837e-06
+      },
+      {
+        "contrast": "C_trust - B_poisoned",
+        "metric": "accuracy",
+        "n_seeds": 30,
+        "delta_mean": 0.5272222222222223,
+        "ci95": [
+          0.5189802932544927,
+          0.5354641511899518
+        ],
+        "cohens_dz": 23.886157474037553,
+        "wilcoxon_p": 1.732216233144114e-06,
+        "paired_t_p": 9.483132009439168e-42,
+        "holm_p": 8.59046465622837e-06
+      },
+      {
+        "contrast": "C_trust - A_clean",
+        "metric": "accuracy",
+        "n_seeds": 30,
+        "delta_mean": -0.026796296296296304,
+        "ci95": [
+          -0.03145657350566985,
+          -0.02213601908692276
+        ],
+        "cohens_dz": -2.14706143645271,
+        "wilcoxon_p": 1.7311263949197288e-06,
+        "paired_t_p": 1.4779723479939404e-12,
+        "holm_p": 8.59046465622837e-06
+      },
+      {
+        "contrast": "D_guard - C_trust",
+        "metric": "accuracy",
+        "n_seeds": 30,
+        "delta_mean": -0.03598148148148148,
+        "ci95": [
+          -0.04138932660838515,
+          -0.030573636354577813
+        ],
+        "cohens_dz": -2.4844842408654357,
+        "wilcoxon_p": 1.7202594665136766e-06,
+        "paired_t_p": 4.026265444641181e-14,
+        "holm_p": 8.59046465622837e-06
+      },
+      {
+        "contrast": "D_guard - A_clean",
+        "metric": "accuracy",
+        "n_seeds": 30,
+        "delta_mean": -0.06277777777777778,
+        "ci95": [
+          -0.06852777374769937,
+          -0.057027781807856184
+        ],
+        "cohens_dz": -4.076804157234589,
+        "wilcoxon_p": 1.7180929312456739e-06,
+        "paired_t_p": 8.122603151897106e-20,
+        "holm_p": 8.59046465622837e-06
+      }
+    ],
+    "false_positive_rate": [
+      {
+        "contrast": "B_poisoned - A_clean",
+        "metric": "false_positive_rate",
+        "n_seeds": 30,
+        "delta_mean": 0.5421832384051793,
+        "ci95": [
+          0.5314881086108956,
+          0.5528783681994631
+        ],
+        "cohens_dz": 18.92960182456884,
+        "wilcoxon_p": 1.7333066441991056e-06,
+        "paired_t_p": 7.943094342101538e-39,
+        "holm_p": 3.4666132883982113e-06
+      },
+      {
+        "contrast": "C_trust - B_poisoned",
+        "metric": "false_positive_rate",
+        "n_seeds": 30,
+        "delta_mean": -0.5867352508568316,
+        "ci95": [
+          -0.6042581822740754,
+          -0.5692123194395879
+        ],
+        "cohens_dz": -12.503076003975275,
+        "wilcoxon_p": 1.862645149230957e-09,
+        "paired_t_p": 1.2660573755686044e-33,
+        "holm_p": 9.313225746154785e-09
+      },
+      {
+        "contrast": "C_trust - A_clean",
+        "metric": "false_positive_rate",
+        "n_seeds": 30,
+        "delta_mean": -0.04455201245165221,
+        "ci95": [
+          -0.05712429262211865,
+          -0.03197973228118577
+        ],
+        "cohens_dz": -1.3232281359311302,
+        "wilcoxon_p": 2.1253203734574536e-06,
+        "paired_t_p": 5.5698373734262624e-08,
+        "holm_p": 3.4666132883982113e-06
+      },
+      {
+        "contrast": "D_guard - C_trust",
+        "metric": "false_positive_rate",
+        "n_seeds": 30,
+        "delta_mean": -0.10974806446345729,
+        "ci95": [
+          -0.12460096888517584,
+          -0.09489516004173874
+        ],
+        "cohens_dz": -2.7590967802940236,
+        "wilcoxon_p": 1.862645149230957e-09,
+        "paired_t_p": 2.7712031957464103e-15,
+        "holm_p": 9.313225746154785e-09
+      },
+      {
+        "contrast": "D_guard - A_clean",
+        "metric": "false_positive_rate",
+        "n_seeds": 30,
+        "delta_mean": -0.15430007691510955,
+        "ci95": [
+          -0.1718871676549303,
+          -0.1367129861752888
+        ],
+        "cohens_dz": -3.276073142210667,
+        "wilcoxon_p": 1.862645149230957e-09,
+        "paired_t_p": 3.038463296029734e-17,
+        "holm_p": 9.313225746154785e-09
+      }
+    ]
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.4203088257923591,
+        "accuracy": 0.7838888888888889,
+        "precision": 0.8068635275339185,
+        "recall": 0.8730569948186528,
+        "macro_f1": 0.7557452369100273,
+        "false_positive_rate": 0.37694704049844235,
+        "attack_recall": 0.8730569948186528
+      },
+      "test_ci": {
+        "accuracy": [
+          0.765,
+          0.8022499999999999
+        ],
+        "false_positive_rate": [
+          0.34062414949455677,
+          0.41407021403007455
+        ]
+      }
+    },
+    {
+      "seed": 0,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.310423680185107,
+        "accuracy": 0.29333333333333333,
+        "precision": 0.44242424242424244,
+        "recall": 0.37823834196891193,
+        "macro_f1": 0.2658940855995198,
+        "false_positive_rate": 0.8598130841121495,
+        "attack_recall": 0.37823834196891193
+      },
+      "test_ci": {
+        "accuracy": [
+          0.2722222222222222,
+          0.3161111111111111
+        ],
+        "false_positive_rate": [
+          0.832558844381425,
+          0.8846168437025796
+        ]
+      }
+    },
+    {
+      "seed": 0,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4951896476552022,
+        "accuracy": 0.7727777777777778,
+        "precision": 0.8328888888888889,
+        "recall": 0.809153713298791,
+        "macro_f1": 0.7551477345178835,
+        "false_positive_rate": 0.29283489096573206,
+        "attack_recall": 0.809153713298791
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7522222222222222,
+          0.7938888888888889
+        ],
+        "false_positive_rate": [
+          0.2574046910439201,
+          0.33074331704734417
+        ]
+      }
+    },
+    {
+      "seed": 0,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5052753029409882,
+        "accuracy": 0.7372222222222222,
+        "precision": 0.8776185226019846,
+        "recall": 0.687392055267703,
+        "macro_f1": 0.7314004937258953,
+        "false_positive_rate": 0.17289719626168223,
+        "attack_recall": 0.687392055267703
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7166666666666667,
+          0.7572361111111111
+        ],
+        "false_positive_rate": [
+          0.1446721499904417,
+          0.20182200114986945
+        ]
+      }
+    },
+    {
+      "seed": 1,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.38896971848827466,
+        "accuracy": 0.8144444444444444,
+        "precision": 0.8220472440944881,
+        "recall": 0.90625,
+        "macro_f1": 0.7892830154820203,
+        "false_positive_rate": 0.3487654320987654,
+        "attack_recall": 0.90625
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7972222222222223,
+          0.8316805555555555
+        ],
+        "false_positive_rate": [
+          0.31203566121842496,
+          0.3847379219841413
+        ]
+      }
+    },
+    {
+      "seed": 1,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 19.315686934656075,
+        "accuracy": 0.24166666666666667,
+        "precision": 0.3894080996884735,
+        "recall": 0.3255208333333333,
+        "macro_f1": 0.2177090049430475,
+        "false_positive_rate": 0.9074074074074074,
+        "attack_recall": 0.3255208333333333
+      },
+      "test_ci": {
+        "accuracy": [
+          0.2222083333333333,
+          0.26055555555555554
+        ],
+        "false_positive_rate": [
+          0.8845498874357034,
+          0.9285740819358947
+        ]
+      }
+    },
+    {
+      "seed": 1,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.46689644638742794,
+        "accuracy": 0.7905555555555556,
+        "precision": 0.8199834847233691,
+        "recall": 0.8619791666666666,
+        "macro_f1": 0.7678437211237239,
+        "false_positive_rate": 0.33641975308641975,
+        "attack_recall": 0.8619791666666666
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7722222222222223,
+          0.8094583333333333
+        ],
+        "false_positive_rate": [
+          0.3008112014453478,
+          0.371952137819571
+        ]
+      }
+    },
+    {
+      "seed": 1,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5000629684634643,
+        "accuracy": 0.7755555555555556,
+        "precision": 0.8555133079847909,
+        "recall": 0.78125,
+        "macro_f1": 0.7636493169491261,
+        "false_positive_rate": 0.2345679012345679,
+        "attack_recall": 0.78125
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7560972222222222,
+          0.7955694444444444
+        ],
+        "false_positive_rate": [
+          0.20192890508572214,
+          0.2674983116222219
+        ]
+      }
+    },
+    {
+      "seed": 2,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3695798019685473,
+        "accuracy": 0.8433333333333334,
+        "precision": 0.8432304038004751,
+        "recall": 0.9268929503916449,
+        "macro_f1": 0.8228554198703453,
+        "false_positive_rate": 0.30414746543778803,
+        "attack_recall": 0.9268929503916449
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8260972222222223,
+          0.8600138888888889
+        ],
+        "false_positive_rate": [
+          0.2680380255002087,
+          0.33828714833039103
+        ]
+      }
+    },
+    {
+      "seed": 2,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.56273292501134,
+        "accuracy": 0.24944444444444444,
+        "precision": 0.39435146443514646,
+        "recall": 0.32811140121845084,
+        "macro_f1": 0.22725792229045355,
+        "false_positive_rate": 0.8894009216589862,
+        "attack_recall": 0.32811140121845084
+      },
+      "test_ci": {
+        "accuracy": [
+          0.22833333333333333,
+          0.2683333333333333
+        ],
+        "false_positive_rate": [
+          0.8645100900810225,
+          0.9137969405504963
+        ]
+      }
+    },
+    {
+      "seed": 2,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4486248503142783,
+        "accuracy": 0.8077777777777778,
+        "precision": 0.8464193270060397,
+        "recall": 0.8537859007832899,
+        "macro_f1": 0.7911423987637562,
+        "false_positive_rate": 0.27342549923195086,
+        "attack_recall": 0.8537859007832899
+      },
+      "test_ci": {
+        "accuracy": [
+          0.79,
+          0.826125
+        ],
+        "false_positive_rate": [
+          0.23823419230931575,
+          0.3078366232366771
+        ]
+      }
+    },
+    {
+      "seed": 2,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.4809620904583787,
+        "accuracy": 0.7705555555555555,
+        "precision": 0.9181818181818182,
+        "recall": 0.7032201914708442,
+        "macro_f1": 0.7667807874301307,
+        "false_positive_rate": 0.11059907834101383,
+        "attack_recall": 0.7032201914708442
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7527638888888889,
+          0.7900138888888889
+        ],
+        "false_positive_rate": [
+          0.08694796302636083,
+          0.13532763963419242
+        ]
+      }
+    },
+    {
+      "seed": 3,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.39739186103300617,
+        "accuracy": 0.8272222222222222,
+        "precision": 0.8292117465224111,
+        "recall": 0.9226139294926913,
+        "macro_f1": 0.8006659423982259,
+        "false_positive_rate": 0.3469387755102041,
+        "attack_recall": 0.9226139294926913
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8088888888888889,
+          0.845
+        ],
+        "false_positive_rate": [
+          0.31017224739845584,
+          0.38438867102708324
+        ]
+      }
+    },
+    {
+      "seed": 3,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.59614583573806,
+        "accuracy": 0.2733333333333333,
+        "precision": 0.4250258531540848,
+        "recall": 0.35339638865004297,
+        "macro_f1": 0.24805978729519976,
+        "false_positive_rate": 0.8728414442700158,
+        "attack_recall": 0.35339638865004297
+      },
+      "test_ci": {
+        "accuracy": [
+          0.25277777777777777,
+          0.295
+        ],
+        "false_positive_rate": [
+          0.8442606661627877,
+          0.8992003149606299
+        ]
+      }
+    },
+    {
+      "seed": 3,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.47960535433165624,
+        "accuracy": 0.7961111111111111,
+        "precision": 0.8344537815126051,
+        "recall": 0.8538263112639725,
+        "macro_f1": 0.7748612820365136,
+        "false_positive_rate": 0.3092621664050236,
+        "attack_recall": 0.8538263112639725
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7783194444444445,
+          0.8155555555555556
+        ],
+        "false_positive_rate": [
+          0.273015873015873,
+          0.3447853758940275
+        ]
+      }
+    },
+    {
+      "seed": 3,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.522838857977142,
+        "accuracy": 0.7444444444444445,
+        "precision": 0.8642487046632125,
+        "recall": 0.7171109200343938,
+        "macro_f1": 0.7356672932330828,
+        "false_positive_rate": 0.20565149136577707,
+        "attack_recall": 0.7171109200343938
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7244305555555556,
+          0.7655555555555555
+        ],
+        "false_positive_rate": [
+          0.17268894042170643,
+          0.23540541185779376
+        ]
+      }
+    },
+    {
+      "seed": 4,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3947187958234555,
+        "accuracy": 0.8105555555555556,
+        "precision": 0.8304383788254756,
+        "recall": 0.8807017543859649,
+        "macro_f1": 0.7911249544425762,
+        "false_positive_rate": 0.3106060606060606,
+        "attack_recall": 0.8807017543859649
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7927777777777778,
+          0.8266805555555555
+        ],
+        "false_positive_rate": [
+          0.27611164133109495,
+          0.3457611665065284
+        ]
+      }
+    },
+    {
+      "seed": 4,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.29902449578071,
+        "accuracy": 0.2644444444444444,
+        "precision": 0.4074446680080483,
+        "recall": 0.35526315789473684,
+        "macro_f1": 0.23821554740951092,
+        "false_positive_rate": 0.8924242424242425,
+        "attack_recall": 0.35526315789473684
+      },
+      "test_ci": {
+        "accuracy": [
+          0.245,
+          0.28444444444444444
+        ],
+        "false_positive_rate": [
+          0.8668616495863687,
+          0.915918484581004
+        ]
+      }
+    },
+    {
+      "seed": 4,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4874946634111455,
+        "accuracy": 0.7661111111111111,
+        "precision": 0.8869752421959096,
+        "recall": 0.7228070175438597,
+        "macro_f1": 0.7607681935978184,
+        "false_positive_rate": 0.1590909090909091,
+        "attack_recall": 0.7228070175438597
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7477777777777778,
+          0.7855555555555556
+        ],
+        "false_positive_rate": [
+          0.13134328358208955,
+          0.18740651953481968
+        ]
+      }
+    },
+    {
+      "seed": 4,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.47081007428730465,
+        "accuracy": 0.7638888888888888,
+        "precision": 0.8994413407821229,
+        "recall": 0.706140350877193,
+        "macro_f1": 0.7597946479735618,
+        "false_positive_rate": 0.13636363636363635,
+        "attack_recall": 0.706140350877193
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7460833333333333,
+          0.7838888888888889
+        ],
+        "false_positive_rate": [
+          0.11126972506913942,
+          0.16233103946357746
+        ]
+      }
+    },
+    {
+      "seed": 5,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.40355652788997615,
+        "accuracy": 0.8088888888888889,
+        "precision": 0.8263327948303716,
+        "recall": 0.8880208333333334,
+        "macro_f1": 0.7858847124727688,
+        "false_positive_rate": 0.3317901234567901,
+        "attack_recall": 0.8880208333333334
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7910972222222222,
+          0.8255555555555556
+        ],
+        "false_positive_rate": [
+          0.29832170834904276,
+          0.3662474779443763
+        ]
+      }
+    },
+    {
+      "seed": 5,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.64213030806169,
+        "accuracy": 0.2644444444444444,
+        "precision": 0.41041666666666665,
+        "recall": 0.3420138888888889,
+        "macro_f1": 0.24166055718475074,
+        "false_positive_rate": 0.8734567901234568,
+        "attack_recall": 0.3420138888888889
+      },
+      "test_ci": {
+        "accuracy": [
+          0.24555555555555555,
+          0.2838888888888889
+        ],
+        "false_positive_rate": [
+          0.8469788693605728,
+          0.8981231082068867
+        ]
+      }
+    },
+    {
+      "seed": 5,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.483080975452992,
+        "accuracy": 0.7966666666666666,
+        "precision": 0.8502673796791443,
+        "recall": 0.828125,
+        "macro_f1": 0.781516016189305,
+        "false_positive_rate": 0.25925925925925924,
+        "attack_recall": 0.828125
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7783333333333333,
+          0.8144583333333333
+        ],
+        "false_positive_rate": [
+          0.22610213414634145,
+          0.2921204646665679
+        ]
+      }
+    },
+    {
+      "seed": 5,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5324509730036499,
+        "accuracy": 0.7405555555555555,
+        "precision": 0.9091995221027479,
+        "recall": 0.6605902777777778,
+        "macro_f1": 0.7376632933649037,
+        "false_positive_rate": 0.11728395061728394,
+        "attack_recall": 0.6605902777777778
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7216666666666667,
+          0.7600138888888889
+        ],
+        "false_positive_rate": [
+          0.09273570324574962,
+          0.1444326787318701
+        ]
+      }
+    },
+    {
+      "seed": 6,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.40134648945500584,
+        "accuracy": 0.8155555555555556,
+        "precision": 0.8289156626506025,
+        "recall": 0.896611642050391,
+        "macro_f1": 0.7928441089523514,
+        "false_positive_rate": 0.32819722650231126,
+        "attack_recall": 0.896611642050391
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7966527777777778,
+          0.8322361111111111
+        ],
+        "false_positive_rate": [
+          0.2932406167720999,
+          0.3654759668722749
+        ]
+      }
+    },
+    {
+      "seed": 6,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.0883899129498,
+        "accuracy": 0.2822222222222222,
+        "precision": 0.4298507462686567,
+        "recall": 0.37532580364900087,
+        "macro_f1": 0.25300263646128307,
+        "false_positive_rate": 0.8828967642526965,
+        "attack_recall": 0.37532580364900087
+      },
+      "test_ci": {
+        "accuracy": [
+          0.2611111111111111,
+          0.30333333333333334
+        ],
+        "false_positive_rate": [
+          0.8577861943893992,
+          0.9064446092728553
+        ]
+      }
+    },
+    {
+      "seed": 6,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4858438111763128,
+        "accuracy": 0.7883333333333333,
+        "precision": 0.8359511343804538,
+        "recall": 0.8323197219808862,
+        "macro_f1": 0.770864663475433,
+        "false_positive_rate": 0.2896764252696456,
+        "attack_recall": 0.8323197219808862
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7688888888888888,
+          0.8066666666666666
+        ],
+        "false_positive_rate": [
+          0.25686208982945913,
+          0.3261300030716873
+        ]
+      }
+    },
+    {
+      "seed": 6,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5174948940903263,
+        "accuracy": 0.7416666666666667,
+        "precision": 0.867237687366167,
+        "recall": 0.7037358818418766,
+        "macro_f1": 0.7350238620984401,
+        "false_positive_rate": 0.19106317411402157,
+        "attack_recall": 0.7037358818418766
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7222083333333333,
+          0.7616805555555556
+        ],
+        "false_positive_rate": [
+          0.1641073182137012,
+          0.222226424609178
+        ]
+      }
+    },
+    {
+      "seed": 7,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3989423480314052,
+        "accuracy": 0.8155555555555556,
+        "precision": 0.8164213787761425,
+        "recall": 0.917319408181027,
+        "macro_f1": 0.7888637648388921,
+        "false_positive_rate": 0.3640552995391705,
+        "attack_recall": 0.917319408181027
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7977777777777778,
+          0.8333333333333334
+        ],
+        "false_positive_rate": [
+          0.3274718630036062,
+          0.40001483679525224
+        ]
+      }
+    },
+    {
+      "seed": 7,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.75021324119773,
+        "accuracy": 0.2688888888888889,
+        "precision": 0.41382868937048506,
+        "recall": 0.34899912967798086,
+        "macro_f1": 0.24533495429574154,
+        "false_positive_rate": 0.8725038402457758,
+        "attack_recall": 0.34899912967798086
+      },
+      "test_ci": {
+        "accuracy": [
+          0.24888888888888888,
+          0.29055555555555557
+        ],
+        "false_positive_rate": [
+          0.8468803173310452,
+          0.8995219008600608
+        ]
+      }
+    },
+    {
+      "seed": 7,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.47688943942149586,
+        "accuracy": 0.795,
+        "precision": 0.8344768439108061,
+        "recall": 0.8468233246301131,
+        "macro_f1": 0.7767226092729702,
+        "false_positive_rate": 0.2964669738863287,
+        "attack_recall": 0.8468233246301131
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7755416666666667,
+          0.8138888888888889
+        ],
+        "false_positive_rate": [
+          0.26307492354740064,
+          0.332320251177394
+        ]
+      }
+    },
+    {
+      "seed": 7,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5091128301006005,
+        "accuracy": 0.7622222222222222,
+        "precision": 0.8608608608608609,
+        "recall": 0.7484769364664926,
+        "macro_f1": 0.752989519368392,
+        "false_positive_rate": 0.21351766513056836,
+        "attack_recall": 0.7484769364664926
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7416666666666667,
+          0.781125
+        ],
+        "false_positive_rate": [
+          0.18166912997952128,
+          0.24583008351565835
+        ]
+      }
+    },
+    {
+      "seed": 8,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3874285902129721,
+        "accuracy": 0.8255555555555556,
+        "precision": 0.8204144282425173,
+        "recall": 0.9303742384682332,
+        "macro_f1": 0.7992110543338014,
+        "false_positive_rate": 0.35944700460829493,
+        "attack_recall": 0.9303742384682332
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8083333333333333,
+          0.8427777777777777
+        ],
+        "false_positive_rate": [
+          0.32352711397058825,
+          0.39473982801178437
+        ]
+      }
+    },
+    {
+      "seed": 8,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 19.199445541324106,
+        "accuracy": 0.26222222222222225,
+        "precision": 0.40763673890608876,
+        "recall": 0.3437771975630983,
+        "macro_f1": 0.23845351010998841,
+        "false_positive_rate": 0.8817204301075269,
+        "attack_recall": 0.3437771975630983
+      },
+      "test_ci": {
+        "accuracy": [
+          0.24388888888888888,
+          0.2822222222222222
+        ],
+        "false_positive_rate": [
+          0.8573434428049264,
+          0.905928836380278
+        ]
+      }
+    },
+    {
+      "seed": 8,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.459558275492098,
+        "accuracy": 0.7994444444444444,
+        "precision": 0.8203252032520325,
+        "recall": 0.8781549173194082,
+        "macro_f1": 0.7762981369538746,
+        "false_positive_rate": 0.33947772657450076,
+        "attack_recall": 0.8781549173194082
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7816666666666666,
+          0.8177777777777778
+        ],
+        "false_positive_rate": [
+          0.3045776953295504,
+          0.37330245248496896
+        ]
+      }
+    },
+    {
+      "seed": 8,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5187003311572178,
+        "accuracy": 0.755,
+        "precision": 0.8314606741573034,
+        "recall": 0.7728459530026109,
+        "macro_f1": 0.7411052633123849,
+        "false_positive_rate": 0.2764976958525346,
+        "attack_recall": 0.7728459530026109
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7372222222222222,
+          0.7739027777777777
+        ],
+        "false_positive_rate": [
+          0.2423276936349693,
+          0.30851574530940634
+        ]
+      }
+    },
+    {
+      "seed": 9,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3803967459716681,
+        "accuracy": 0.8361111111111111,
+        "precision": 0.8406026962727994,
+        "recall": 0.9185441941074524,
+        "macro_f1": 0.8144508216054722,
+        "false_positive_rate": 0.3111455108359133,
+        "attack_recall": 0.9185441941074524
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8172222222222222,
+          0.8522222222222222
+        ],
+        "false_positive_rate": [
+          0.2772083230882714,
+          0.3447738481911505
+        ]
+      }
+    },
+    {
+      "seed": 9,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.714139275195755,
+        "accuracy": 0.2633333333333333,
+        "precision": 0.40870488322717624,
+        "recall": 0.33362218370883884,
+        "macro_f1": 0.24285873802176383,
+        "false_positive_rate": 0.8622291021671826,
+        "attack_recall": 0.33362218370883884
+      },
+      "test_ci": {
+        "accuracy": [
+          0.24388888888888888,
+          0.2838888888888889
+        ],
+        "false_positive_rate": [
+          0.8349823083269865,
+          0.8885895523842944
+        ]
+      }
+    },
+    {
+      "seed": 9,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4578223447068169,
+        "accuracy": 0.8233333333333334,
+        "precision": 0.8500837520938024,
+        "recall": 0.8795493934142115,
+        "macro_f1": 0.8052859887552999,
+        "false_positive_rate": 0.2770897832817337,
+        "attack_recall": 0.8795493934142115
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8055555555555556,
+          0.8394444444444444
+        ],
+        "false_positive_rate": [
+          0.2431542177629134,
+          0.3100692172001227
+        ]
+      }
+    },
+    {
+      "seed": 9,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.527893607565141,
+        "accuracy": 0.7533333333333333,
+        "precision": 0.8744725738396625,
+        "recall": 0.7183708838821491,
+        "macro_f1": 0.7461887019673552,
+        "false_positive_rate": 0.18421052631578946,
+        "attack_recall": 0.7183708838821491
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7333333333333333,
+          0.7711111111111111
+        ],
+        "false_positive_rate": [
+          0.15469847502034054,
+          0.21148260967266733
+        ]
+      }
+    },
+    {
+      "seed": 10,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.382535251621515,
+        "accuracy": 0.8211111111111111,
+        "precision": 0.8272292993630573,
+        "recall": 0.9082167832167832,
+        "macro_f1": 0.7987500000000001,
+        "false_positive_rate": 0.3307926829268293,
+        "attack_recall": 0.9082167832167832
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8038888888888889,
+          0.8377916666666666
+        ],
+        "false_positive_rate": [
+          0.2937742827298206,
+          0.36461808669656204
+        ]
+      }
+    },
+    {
+      "seed": 10,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 19.45212640861534,
+        "accuracy": 0.2577777777777778,
+        "precision": 0.3976545842217484,
+        "recall": 0.32604895104895104,
+        "macro_f1": 0.23910195805948217,
+        "false_positive_rate": 0.8612804878048781,
+        "attack_recall": 0.32604895104895104
+      },
+      "test_ci": {
+        "accuracy": [
+          0.23776388888888889,
+          0.2772222222222222
+        ],
+        "false_positive_rate": [
+          0.8351225134797384,
+          0.8872255754949777
+        ]
+      }
+    },
+    {
+      "seed": 10,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.46134641167197477,
+        "accuracy": 0.8094444444444444,
+        "precision": 0.8368376787216149,
+        "recall": 0.8697552447552448,
+        "macro_f1": 0.7911303824776863,
+        "false_positive_rate": 0.29573170731707316,
+        "attack_recall": 0.8697552447552448
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7905416666666667,
+          0.826125
+        ],
+        "false_positive_rate": [
+          0.260790378090692,
+          0.32900999000999004
+        ]
+      }
+    },
+    {
+      "seed": 10,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5020298740374612,
+        "accuracy": 0.7794444444444445,
+        "precision": 0.8694362017804155,
+        "recall": 0.7683566433566433,
+        "macro_f1": 0.7705183888759544,
+        "false_positive_rate": 0.20121951219512196,
+        "attack_recall": 0.7683566433566433
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7605555555555555,
+          0.7983333333333333
+        ],
+        "false_positive_rate": [
+          0.17210335968559654,
+          0.2316308853517481
+        ]
+      }
+    },
+    {
+      "seed": 11,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.394672907278605,
+        "accuracy": 0.8144444444444444,
+        "precision": 0.8281374900079936,
+        "recall": 0.896969696969697,
+        "macro_f1": 0.7907241945387786,
+        "false_positive_rate": 0.3333333333333333,
+        "attack_recall": 0.896969696969697
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7961111111111111,
+          0.8316805555555555
+        ],
+        "false_positive_rate": [
+          0.2968737599206349,
+          0.3675326233143106
+        ]
+      }
+    },
+    {
+      "seed": 11,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.183867937606514,
+        "accuracy": 0.2627777777777778,
+        "precision": 0.4102296450939457,
+        "recall": 0.34025974025974026,
+        "macro_f1": 0.23979107780922596,
+        "false_positive_rate": 0.875968992248062,
+        "attack_recall": 0.34025974025974026
+      },
+      "test_ci": {
+        "accuracy": [
+          0.24333333333333335,
+          0.285
+        ],
+        "false_positive_rate": [
+          0.8509299706504676,
+          0.8997162895365373
+        ]
+      }
+    },
+    {
+      "seed": 11,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.47546769077650014,
+        "accuracy": 0.7938888888888889,
+        "precision": 0.8379310344827586,
+        "recall": 0.8415584415584415,
+        "macro_f1": 0.7755124337134741,
+        "false_positive_rate": 0.29147286821705426,
+        "attack_recall": 0.8415584415584415
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7755555555555556,
+          0.8122222222222222
+        ],
+        "false_positive_rate": [
+          0.25732433690088413,
+          0.32496876656105184
+        ]
+      }
+    },
+    {
+      "seed": 11,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5202574400911596,
+        "accuracy": 0.7461111111111111,
+        "precision": 0.9002293577981652,
+        "recall": 0.6796536796536796,
+        "macro_f1": 0.7420080032090617,
+        "false_positive_rate": 0.13488372093023257,
+        "attack_recall": 0.6796536796536796
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7260972222222223,
+          0.7655555555555555
+        ],
+        "false_positive_rate": [
+          0.110754929406037,
+          0.16115442539388322
+        ]
+      }
+    },
+    {
+      "seed": 12,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3923850577923555,
+        "accuracy": 0.8222222222222222,
+        "precision": 0.834803528468324,
+        "recall": 0.9012987012987013,
+        "macro_f1": 0.7998329160869002,
+        "false_positive_rate": 0.31937984496124033,
+        "attack_recall": 0.9012987012987013
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8038888888888889,
+          0.8394444444444444
+        ],
+        "false_positive_rate": [
+          0.2823330822936501,
+          0.35367203500279276
+        ]
+      }
+    },
+    {
+      "seed": 12,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 19.1095266794953,
+        "accuracy": 0.2594444444444444,
+        "precision": 0.4057203389830508,
+        "recall": 0.3316017316017316,
+        "macro_f1": 0.2384305333684166,
+        "false_positive_rate": 0.8697674418604651,
+        "attack_recall": 0.3316017316017316
+      },
+      "test_ci": {
+        "accuracy": [
+          0.2388888888888889,
+          0.28055555555555556
+        ],
+        "false_positive_rate": [
+          0.8442416568800157,
+          0.8957767445513087
+        ]
+      }
+    },
+    {
+      "seed": 12,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.48224203704454466,
+        "accuracy": 0.7694444444444445,
+        "precision": 0.830948121645796,
+        "recall": 0.8043290043290043,
+        "macro_f1": 0.7523432078881507,
+        "false_positive_rate": 0.2930232558139535,
+        "attack_recall": 0.8043290043290043
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7494444444444445,
+          0.79
+        ],
+        "false_positive_rate": [
+          0.2563893653516295,
+          0.32746278292571773
+        ]
+      }
+    },
+    {
+      "seed": 12,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5073276508047617,
+        "accuracy": 0.745,
+        "precision": 0.875,
+        "recall": 0.703030303030303,
+        "macro_f1": 0.738536939806216,
+        "false_positive_rate": 0.17984496124031008,
+        "attack_recall": 0.703030303030303
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7255416666666666,
+          0.7661111111111111
+        ],
+        "false_positive_rate": [
+          0.14968739183108343,
+          0.20731755941961333
+        ]
+      }
+    },
+    {
+      "seed": 13,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.39143857890865286,
+        "accuracy": 0.8261111111111111,
+        "precision": 0.8341384863123994,
+        "recall": 0.9063867016622922,
+        "macro_f1": 0.8055749670005434,
+        "false_positive_rate": 0.3135464231354642,
+        "attack_recall": 0.9063867016622922
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8088888888888889,
+          0.8422222222222222
+        ],
+        "false_positive_rate": [
+          0.27811527670365643,
+          0.3474264242169435
+        ]
+      }
+    },
+    {
+      "seed": 13,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.43670073182141,
+        "accuracy": 0.26944444444444443,
+        "precision": 0.4146825396825397,
+        "recall": 0.3657042869641295,
+        "macro_f1": 0.2405670048020421,
+        "false_positive_rate": 0.898021308980213,
+        "attack_recall": 0.3657042869641295
+      },
+      "test_ci": {
+        "accuracy": [
+          0.2477777777777778,
+          0.2911111111111111
+        ],
+        "false_positive_rate": [
+          0.8756964285714285,
+          0.9197682020802377
+        ]
+      }
+    },
+    {
+      "seed": 13,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.47977414242193667,
+        "accuracy": 0.8072222222222222,
+        "precision": 0.8585585585585586,
+        "recall": 0.8337707786526685,
+        "macro_f1": 0.7941868155006391,
+        "false_positive_rate": 0.2389649923896499,
+        "attack_recall": 0.8337707786526685
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7888888888888889,
+          0.8244444444444444
+        ],
+        "false_positive_rate": [
+          0.20744853319608852,
+          0.27181131098773914
+        ]
+      }
+    },
+    {
+      "seed": 13,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.49812996013257177,
+        "accuracy": 0.7583333333333333,
+        "precision": 0.8773987206823027,
+        "recall": 0.7200349956255468,
+        "macro_f1": 0.7522966341130242,
+        "false_positive_rate": 0.1750380517503805,
+        "attack_recall": 0.7200349956255468
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7383333333333333,
+          0.7783333333333333
+        ],
+        "false_positive_rate": [
+          0.14637253660355587,
+          0.20339115673324315
+        ]
+      }
+    },
+    {
+      "seed": 14,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.392271393752533,
+        "accuracy": 0.8211111111111111,
+        "precision": 0.835076427996782,
+        "recall": 0.8987012987012987,
+        "macro_f1": 0.7989172896437546,
+        "false_positive_rate": 0.3178294573643411,
+        "attack_recall": 0.8987012987012987
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8027638888888889,
+          0.8377916666666666
+        ],
+        "false_positive_rate": [
+          0.28168381546765625,
+          0.3554960872773856
+        ]
+      }
+    },
+    {
+      "seed": 14,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 19.34313300981713,
+        "accuracy": 0.26944444444444443,
+        "precision": 0.4185336048879837,
+        "recall": 0.35584415584415585,
+        "macro_f1": 0.24290668816935349,
+        "false_positive_rate": 0.8852713178294573,
+        "attack_recall": 0.35584415584415585
+      },
+      "test_ci": {
+        "accuracy": [
+          0.24944444444444444,
+          0.2916666666666667
+        ],
+        "false_positive_rate": [
+          0.8590874873937473,
+          0.9089529364481796
+        ]
+      }
+    },
+    {
+      "seed": 14,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4798773296132256,
+        "accuracy": 0.7927777777777778,
+        "precision": 0.8359106529209622,
+        "recall": 0.8424242424242424,
+        "macro_f1": 0.7739880207591701,
+        "false_positive_rate": 0.2961240310077519,
+        "attack_recall": 0.8424242424242424
+      },
+      "test_ci": {
+        "accuracy": [
+          0.775,
+          0.8111111111111111
+        ],
+        "false_positive_rate": [
+          0.26044892216073207,
+          0.3333333333333333
+        ]
+      }
+    },
+    {
+      "seed": 14,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5326427216708732,
+        "accuracy": 0.7377777777777778,
+        "precision": 0.87651598676957,
+        "recall": 0.6883116883116883,
+        "macro_f1": 0.7321019778290423,
+        "false_positive_rate": 0.17364341085271318,
+        "attack_recall": 0.6883116883116883
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7177777777777777,
+          0.7583333333333333
+        ],
+        "false_positive_rate": [
+          0.14507908517560214,
+          0.20472956577654294
+        ]
+      }
+    },
+    {
+      "seed": 15,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.4088945935720574,
+        "accuracy": 0.8088888888888889,
+        "precision": 0.8183217859892224,
+        "recall": 0.9077711357813835,
+        "macro_f1": 0.7781519830891046,
+        "false_positive_rate": 0.3751987281399046,
+        "attack_recall": 0.9077711357813835
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7922083333333334,
+          0.8288888888888889
+        ],
+        "false_positive_rate": [
+          0.3371490371667116,
+          0.4110073431570647
+        ]
+      }
+    },
+    {
+      "seed": 15,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.23114587017937,
+        "accuracy": 0.2722222222222222,
+        "precision": 0.42929806714140384,
+        "recall": 0.36037574722459437,
+        "macro_f1": 0.24294085692160103,
+        "false_positive_rate": 0.8918918918918919,
+        "attack_recall": 0.36037574722459437
+      },
+      "test_ci": {
+        "accuracy": [
+          0.25054166666666666,
+          0.29333333333333333
+        ],
+        "false_positive_rate": [
+          0.8653147756636128,
+          0.9161423617480993
+        ]
+      }
+    },
+    {
+      "seed": 15,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.48887483609159443,
+        "accuracy": 0.7811111111111111,
+        "precision": 0.8187038556193601,
+        "recall": 0.852263023057216,
+        "macro_f1": 0.7547633044019503,
+        "false_positive_rate": 0.35135135135135137,
+        "attack_recall": 0.852263023057216
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7627777777777778,
+          0.8005555555555556
+        ],
+        "false_positive_rate": [
+          0.3141311184210526,
+          0.388709803822429
+        ]
+      }
+    },
+    {
+      "seed": 15,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5153748739674173,
+        "accuracy": 0.75,
+        "precision": 0.852394916911046,
+        "recall": 0.7446626814688301,
+        "macro_f1": 0.7374191348187414,
+        "false_positive_rate": 0.24006359300476948,
+        "attack_recall": 0.7446626814688301
+      },
+      "test_ci": {
+        "accuracy": [
+          0.73,
+          0.7705555555555555
+        ],
+        "false_positive_rate": [
+          0.20783595483618325,
+          0.27259051666096973
+        ]
+      }
+    },
+    {
+      "seed": 16,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.402544446778807,
+        "accuracy": 0.8066666666666666,
+        "precision": 0.8240516545601292,
+        "recall": 0.8870547350130321,
+        "macro_f1": 0.7833949998271033,
+        "false_positive_rate": 0.3359013867488444,
+        "attack_recall": 0.8870547350130321
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7866666666666666,
+          0.825
+        ],
+        "false_positive_rate": [
+          0.3013676677204074,
+          0.3742278179328951
+        ]
+      }
+    },
+    {
+      "seed": 16,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.740349692924656,
+        "accuracy": 0.25722222222222224,
+        "precision": 0.4041237113402062,
+        "recall": 0.34057341442224154,
+        "macro_f1": 0.2328238909083606,
+        "false_positive_rate": 0.8906009244992296,
+        "attack_recall": 0.34057341442224154
+      },
+      "test_ci": {
+        "accuracy": [
+          0.23777777777777778,
+          0.2761111111111111
+        ],
+        "false_positive_rate": [
+          0.8671969706336939,
+          0.9144663728793372
+        ]
+      }
+    },
+    {
+      "seed": 16,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4895115716901732,
+        "accuracy": 0.7927777777777778,
+        "precision": 0.8285472972972973,
+        "recall": 0.8523023457862728,
+        "macro_f1": 0.7726976496178619,
+        "false_positive_rate": 0.31278890600924497,
+        "attack_recall": 0.8523023457862728
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7727777777777778,
+          0.8111111111111111
+        ],
+        "false_positive_rate": [
+          0.27860458128220356,
+          0.34939053996884795
+        ]
+      }
+    },
+    {
+      "seed": 16,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5116476023986222,
+        "accuracy": 0.76,
+        "precision": 0.8788198103266597,
+        "recall": 0.7245873153779322,
+        "macro_f1": 0.7531428571428571,
+        "false_positive_rate": 0.17719568567026195,
+        "attack_recall": 0.7245873153779322
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7388750000000001,
+          0.7777777777777778
+        ],
+        "false_positive_rate": [
+          0.14962904636920385,
+          0.20779467118617348
+        ]
+      }
+    },
+    {
+      "seed": 17,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3981159208052049,
+        "accuracy": 0.8194444444444444,
+        "precision": 0.830249396621078,
+        "recall": 0.900523560209424,
+        "macro_f1": 0.7977932852853309,
+        "false_positive_rate": 0.32262996941896027,
+        "attack_recall": 0.900523560209424
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8022083333333333,
+          0.8377777777777777
+        ],
+        "false_positive_rate": [
+          0.2863957209636821,
+          0.35829851847255834
+        ]
+      }
+    },
+    {
+      "seed": 17,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.466965293440467,
+        "accuracy": 0.28555555555555556,
+        "precision": 0.4258474576271186,
+        "recall": 0.3507853403141361,
+        "macro_f1": 0.2665166830381191,
+        "false_positive_rate": 0.8287461773700305,
+        "attack_recall": 0.3507853403141361
+      },
+      "test_ci": {
+        "accuracy": [
+          0.2655416666666667,
+          0.306125
+        ],
+        "false_positive_rate": [
+          0.7996827295954761,
+          0.8552334525529037
+        ]
+      }
+    },
+    {
+      "seed": 17,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4817299941545051,
+        "accuracy": 0.7744444444444445,
+        "precision": 0.8268551236749117,
+        "recall": 0.8167539267015707,
+        "macro_f1": 0.7573315233922051,
+        "false_positive_rate": 0.2996941896024465,
+        "attack_recall": 0.8167539267015707
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7555555555555555,
+          0.7939027777777777
+        ],
+        "false_positive_rate": [
+          0.26341234039299644,
+          0.33774316641743796
+        ]
+      }
+    },
+    {
+      "seed": 17,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5288715945548986,
+        "accuracy": 0.7377777777777778,
+        "precision": 0.9119804400977995,
+        "recall": 0.6509598603839442,
+        "macro_f1": 0.7355827884811696,
+        "false_positive_rate": 0.11009174311926606,
+        "attack_recall": 0.6509598603839442
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7183333333333334,
+          0.7583333333333333
+        ],
+        "false_positive_rate": [
+          0.08660977269793586,
+          0.13538660578386605
+        ]
+      }
+    },
+    {
+      "seed": 18,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3778311113068611,
+        "accuracy": 0.8333333333333334,
+        "precision": 0.8405103668261563,
+        "recall": 0.9133448873483535,
+        "macro_f1": 0.8118687150215167,
+        "false_positive_rate": 0.30959752321981426,
+        "attack_recall": 0.9133448873483535
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8166666666666667,
+          0.8488888888888889
+        ],
+        "false_positive_rate": [
+          0.2737253551589109,
+          0.34326988859730634
+        ]
+      }
+    },
+    {
+      "seed": 18,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.54638956559165,
+        "accuracy": 0.2511111111111111,
+        "precision": 0.39979338842975204,
+        "recall": 0.33535528596187175,
+        "macro_f1": 0.22635346693381664,
+        "false_positive_rate": 0.8993808049535603,
+        "attack_recall": 0.33535528596187175
+      },
+      "test_ci": {
+        "accuracy": [
+          0.23055555555555557,
+          0.27111111111111114
+        ],
+        "false_positive_rate": [
+          0.8756002858208027,
+          0.9235693100598046
+        ]
+      }
+    },
+    {
+      "seed": 18,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.47444186304115393,
+        "accuracy": 0.8,
+        "precision": 0.8759469696969697,
+        "recall": 0.8015597920277296,
+        "macro_f1": 0.7890556333213972,
+        "false_positive_rate": 0.20278637770897834,
+        "attack_recall": 0.8015597920277296
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7816666666666666,
+          0.8172222222222222
+        ],
+        "false_positive_rate": [
+          0.17212532774633046,
+          0.2329336323901541
+        ]
+      }
+    },
+    {
+      "seed": 18,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.4737028464738492,
+        "accuracy": 0.7855555555555556,
+        "precision": 0.9183006535947712,
+        "recall": 0.7305025996533796,
+        "macro_f1": 0.7805443813297217,
+        "false_positive_rate": 0.11609907120743033,
+        "attack_recall": 0.7305025996533796
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7666527777777778,
+          0.805
+        ],
+        "false_positive_rate": [
+          0.09196583664418367,
+          0.14132683121856784
+        ]
+      }
+    },
+    {
+      "seed": 19,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3954775584707458,
+        "accuracy": 0.8188888888888889,
+        "precision": 0.8267405063291139,
+        "recall": 0.9071180555555556,
+        "macro_f1": 0.7948641936638625,
+        "false_positive_rate": 0.33796296296296297,
+        "attack_recall": 0.9071180555555556
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8005555555555556,
+          0.8366666666666667
+        ],
+        "false_positive_rate": [
+          0.30307575757575755,
+          0.37327651191898503
+        ]
+      }
+    },
+    {
+      "seed": 19,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.518606192326178,
+        "accuracy": 0.2627777777777778,
+        "precision": 0.41098677517802645,
+        "recall": 0.3506944444444444,
+        "macro_f1": 0.23632614238556163,
+        "false_positive_rate": 0.8935185185185185,
+        "attack_recall": 0.3506944444444444
+      },
+      "test_ci": {
+        "accuracy": [
+          0.24333333333333335,
+          0.2833472222222222
+        ],
+        "false_positive_rate": [
+          0.8683779217757178,
+          0.9162719056541386
+        ]
+      }
+    },
+    {
+      "seed": 19,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.48437715445087753,
+        "accuracy": 0.7977777777777778,
+        "precision": 0.83109243697479,
+        "recall": 0.8585069444444444,
+        "macro_f1": 0.7776145563356092,
+        "false_positive_rate": 0.3101851851851852,
+        "attack_recall": 0.8585069444444444
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7788888888888889,
+          0.8155694444444445
+        ],
+        "false_positive_rate": [
+          0.2762183043032661,
+          0.3437110152343685
+        ]
+      }
+    },
+    {
+      "seed": 19,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5180249184332592,
+        "accuracy": 0.7555555555555555,
+        "precision": 0.8490196078431372,
+        "recall": 0.7517361111111112,
+        "macro_f1": 0.7446492409118344,
+        "false_positive_rate": 0.23765432098765432,
+        "attack_recall": 0.7517361111111112
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7361111111111112,
+          0.7755694444444444
+        ],
+        "false_positive_rate": [
+          0.20573937340854634,
+          0.27065081541932956
+        ]
+      }
+    },
+    {
+      "seed": 20,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3801799282746653,
+        "accuracy": 0.8344444444444444,
+        "precision": 0.8421468034727704,
+        "recall": 0.9158798283261803,
+        "macro_f1": 0.811165059480894,
+        "false_positive_rate": 0.31496062992125984,
+        "attack_recall": 0.9158798283261803
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8166666666666667,
+          0.851125
+        ],
+        "false_positive_rate": [
+          0.27801729197540825,
+          0.35131045229593433
+        ]
+      }
+    },
+    {
+      "seed": 20,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.368451251848803,
+        "accuracy": 0.2783333333333333,
+        "precision": 0.43020833333333336,
+        "recall": 0.35450643776824037,
+        "macro_f1": 0.2540139581256231,
+        "false_positive_rate": 0.8614173228346457,
+        "attack_recall": 0.35450643776824037
+      },
+      "test_ci": {
+        "accuracy": [
+          0.25833333333333336,
+          0.29888888888888887
+        ],
+        "false_positive_rate": [
+          0.8333206686930091,
+          0.8857142857142857
+        ]
+      }
+    },
+    {
+      "seed": 20,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.47772633243718765,
+        "accuracy": 0.78,
+        "precision": 0.8651471984805318,
+        "recall": 0.7819742489270386,
+        "macro_f1": 0.7674597654501585,
+        "false_positive_rate": 0.22362204724409449,
+        "attack_recall": 0.7819742489270386
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7611111111111111,
+          0.7988888888888889
+        ],
+        "false_positive_rate": [
+          0.19107148369570812,
+          0.2555931085150295
+        ]
+      }
+    },
+    {
+      "seed": 20,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.49623051302954496,
+        "accuracy": 0.7522222222222222,
+        "precision": 0.9224441833137486,
+        "recall": 0.6738197424892703,
+        "macro_f1": 0.7486020923520924,
+        "false_positive_rate": 0.10393700787401575,
+        "attack_recall": 0.6738197424892703
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7316527777777778,
+          0.7716805555555555
+        ],
+        "false_positive_rate": [
+          0.08178618669690098,
+          0.1287041575366163
+        ]
+      }
+    },
+    {
+      "seed": 21,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3898079181493419,
+        "accuracy": 0.8211111111111111,
+        "precision": 0.8256450351837373,
+        "recall": 0.9142857142857143,
+        "macro_f1": 0.79577483647188,
+        "false_positive_rate": 0.3457364341085271,
+        "attack_recall": 0.9142857142857143
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8022222222222222,
+          0.8383333333333334
+        ],
+        "false_positive_rate": [
+          0.3077910290142553,
+          0.3818524110207603
+        ]
+      }
+    },
+    {
+      "seed": 21,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 19.039626761710696,
+        "accuracy": 0.25222222222222224,
+        "precision": 0.400208986415883,
+        "recall": 0.3316017316017316,
+        "macro_f1": 0.22905975073313783,
+        "false_positive_rate": 0.889922480620155,
+        "attack_recall": 0.3316017316017316
+      },
+      "test_ci": {
+        "accuracy": [
+          0.23277777777777778,
+          0.2733333333333333
+        ],
+        "false_positive_rate": [
+          0.8650190812038066,
+          0.912282005161492
+        ]
+      }
+    },
+    {
+      "seed": 21,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.46964994508178,
+        "accuracy": 0.7833333333333333,
+        "precision": 0.8305963699222126,
+        "recall": 0.832034632034632,
+        "macro_f1": 0.7642599239184165,
+        "false_positive_rate": 0.30387596899224806,
+        "attack_recall": 0.832034632034632
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7633333333333333,
+          0.8016666666666666
+        ],
+        "false_positive_rate": [
+          0.2688591893780573,
+          0.34010190194841833
+        ]
+      }
+    },
+    {
+      "seed": 21,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5220807831531092,
+        "accuracy": 0.7588888888888888,
+        "precision": 0.8822905620360552,
+        "recall": 0.7203463203463204,
+        "macro_f1": 0.7520941255320202,
+        "false_positive_rate": 0.17209302325581396,
+        "attack_recall": 0.7203463203463204
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7383194444444444,
+          0.7788888888888889
+        ],
+        "false_positive_rate": [
+          0.14537158657667487,
+          0.2024183192704418
+        ]
+      }
+    },
+    {
+      "seed": 22,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.38491614741260416,
+        "accuracy": 0.8305555555555556,
+        "precision": 0.833201581027668,
+        "recall": 0.9181184668989547,
+        "macro_f1": 0.8083255156445133,
+        "false_positive_rate": 0.3236196319018405,
+        "attack_recall": 0.9181184668989547
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8138888888888889,
+          0.8488888888888889
+        ],
+        "false_positive_rate": [
+          0.2880569569990423,
+          0.35894687208358805
+        ]
+      }
+    },
+    {
+      "seed": 22,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.779675525238336,
+        "accuracy": 0.27444444444444444,
+        "precision": 0.4170168067226891,
+        "recall": 0.34581881533101044,
+        "macro_f1": 0.2537142857142857,
+        "false_positive_rate": 0.8512269938650306,
+        "attack_recall": 0.34581881533101044
+      },
+      "test_ci": {
+        "accuracy": [
+          0.25554166666666667,
+          0.2961111111111111
+        ],
+        "false_positive_rate": [
+          0.8235206712699938,
+          0.8789790905258031
+        ]
+      }
+    },
+    {
+      "seed": 22,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4699762757257094,
+        "accuracy": 0.7944444444444444,
+        "precision": 0.8562271062271062,
+        "recall": 0.8144599303135889,
+        "macro_f1": 0.7813813025210083,
+        "false_positive_rate": 0.24079754601226994,
+        "attack_recall": 0.8144599303135889
+      },
+      "test_ci": {
+        "accuracy": [
+          0.775,
+          0.8127916666666667
+        ],
+        "false_positive_rate": [
+          0.20868020222477104,
+          0.2717919511257107
+        ]
+      }
+    },
+    {
+      "seed": 22,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5111917746104948,
+        "accuracy": 0.7694444444444445,
+        "precision": 0.9094972067039107,
+        "recall": 0.7090592334494773,
+        "macro_f1": 0.765164568709169,
+        "false_positive_rate": 0.12423312883435583,
+        "attack_recall": 0.7090592334494773
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7483333333333333,
+          0.7888888888888889
+        ],
+        "false_positive_rate": [
+          0.09812927886017414,
+          0.15062697419897028
+        ]
+      }
+    },
+    {
+      "seed": 23,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3972457467460113,
+        "accuracy": 0.8261111111111111,
+        "precision": 0.8315958299919808,
+        "recall": 0.9096491228070176,
+        "macro_f1": 0.8054175699576333,
+        "false_positive_rate": 0.3181818181818182,
+        "attack_recall": 0.9096491228070176
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8094444444444444,
+          0.8422222222222222
+        ],
+        "false_positive_rate": [
+          0.2846176869439123,
+          0.3537135034791221
+        ]
+      }
+    },
+    {
+      "seed": 23,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.536694629343813,
+        "accuracy": 0.27444444444444444,
+        "precision": 0.4120762711864407,
+        "recall": 0.3412280701754386,
+        "macro_f1": 0.2559214824343281,
+        "false_positive_rate": 0.8409090909090909,
+        "attack_recall": 0.3412280701754386
+      },
+      "test_ci": {
+        "accuracy": [
+          0.253875,
+          0.29444444444444445
+        ],
+        "false_positive_rate": [
+          0.8124953078078078,
+          0.8678977014468229
+        ]
+      }
+    },
+    {
+      "seed": 23,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4799884312772458,
+        "accuracy": 0.7888888888888889,
+        "precision": 0.8247863247863247,
+        "recall": 0.8464912280701754,
+        "macro_f1": 0.7704620960434914,
+        "false_positive_rate": 0.3106060606060606,
+        "attack_recall": 0.8464912280701754
+      },
+      "test_ci": {
+        "accuracy": [
+          0.77,
+          0.8077777777777778
+        ],
+        "false_positive_rate": [
+          0.2752920782674772,
+          0.3441407287847388
+        ]
+      }
+    },
+    {
+      "seed": 23,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5228633219064748,
+        "accuracy": 0.7577777777777778,
+        "precision": 0.8512974051896207,
+        "recall": 0.7482456140350877,
+        "macro_f1": 0.7487060667888554,
+        "false_positive_rate": 0.22575757575757577,
+        "attack_recall": 0.7482456140350877
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7377638888888889,
+          0.7755555555555556
+        ],
+        "false_positive_rate": [
+          0.19400577547970874,
+          0.25855345202717045
+        ]
+      }
+    },
+    {
+      "seed": 24,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.387875128055962,
+        "accuracy": 0.8311111111111111,
+        "precision": 0.8283752860411899,
+        "recall": 0.9321888412017167,
+        "macro_f1": 0.8033793456326643,
+        "false_positive_rate": 0.3543307086614173,
+        "attack_recall": 0.9321888412017167
+      },
+      "test_ci": {
+        "accuracy": [
+          0.813875,
+          0.8488888888888889
+        ],
+        "false_positive_rate": [
+          0.31679731669266775,
+          0.39193590452382093
+        ]
+      }
+    },
+    {
+      "seed": 24,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.25710854677902,
+        "accuracy": 0.2811111111111111,
+        "precision": 0.4310160427807487,
+        "recall": 0.3459227467811159,
+        "macro_f1": 0.26057142857142856,
+        "false_positive_rate": 0.8377952755905512,
+        "attack_recall": 0.3459227467811159
+      },
+      "test_ci": {
+        "accuracy": [
+          0.26109722222222226,
+          0.3016666666666667
+        ],
+        "false_positive_rate": [
+          0.8086692209546122,
+          0.8658188136095649
+        ]
+      }
+    },
+    {
+      "seed": 24,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.487903964470259,
+        "accuracy": 0.7994444444444444,
+        "precision": 0.8378151260504202,
+        "recall": 0.855793991416309,
+        "macro_f1": 0.7783746450771238,
+        "false_positive_rate": 0.30393700787401573,
+        "attack_recall": 0.855793991416309
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7816666666666666,
+          0.8183333333333334
+        ],
+        "false_positive_rate": [
+          0.2689870806700923,
+          0.3384890965732087
+        ]
+      }
+    },
+    {
+      "seed": 24,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5613888902786263,
+        "accuracy": 0.7438888888888889,
+        "precision": 0.895505617977528,
+        "recall": 0.6841201716738198,
+        "macro_f1": 0.7386436113670186,
+        "false_positive_rate": 0.14645669291338584,
+        "attack_recall": 0.6841201716738198
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7244444444444444,
+          0.7638888888888888
+        ],
+        "false_positive_rate": [
+          0.11941902397901837,
+          0.17091748809724566
+        ]
+      }
+    },
+    {
+      "seed": 25,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3939096763375815,
+        "accuracy": 0.8055555555555556,
+        "precision": 0.8251012145748988,
+        "recall": 0.8837814397224631,
+        "macro_f1": 0.7823274789790537,
+        "false_positive_rate": 0.33384853168469864,
+        "attack_recall": 0.8837814397224631
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7877777777777778,
+          0.8233333333333334
+        ],
+        "false_positive_rate": [
+          0.298451564828614,
+          0.3726740372670807
+        ]
+      }
+    },
+    {
+      "seed": 25,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.351082126642275,
+        "accuracy": 0.25666666666666665,
+        "precision": 0.4035453597497393,
+        "recall": 0.33564614050303554,
+        "macro_f1": 0.23364186217008798,
+        "false_positive_rate": 0.884080370942813,
+        "attack_recall": 0.33564614050303554
+      },
+      "test_ci": {
+        "accuracy": [
+          0.23720833333333333,
+          0.27723611111111107
+        ],
+        "false_positive_rate": [
+          0.8598027491104516,
+          0.9089585165418321
+        ]
+      }
+    },
+    {
+      "seed": 25,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4835061587413514,
+        "accuracy": 0.7777777777777778,
+        "precision": 0.8271068635968722,
+        "recall": 0.8256721595836947,
+        "macro_f1": 0.7588734567901234,
+        "false_positive_rate": 0.3075734157650695,
+        "attack_recall": 0.8256721595836947
+      },
+      "test_ci": {
+        "accuracy": [
+          0.76,
+          0.7977777777777778
+        ],
+        "false_positive_rate": [
+          0.27297577088268715,
+          0.3445200798990748
+        ]
+      }
+    },
+    {
+      "seed": 25,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5313926396036635,
+        "accuracy": 0.7466666666666667,
+        "precision": 0.9001148105625718,
+        "recall": 0.6799653078924545,
+        "macro_f1": 0.7426817278947051,
+        "false_positive_rate": 0.13446676970633695,
+        "attack_recall": 0.6799653078924545
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7255555555555555,
+          0.7666666666666667
+        ],
+        "false_positive_rate": [
+          0.10886389950498207,
+          0.16049382716049382
+        ]
+      }
+    },
+    {
+      "seed": 26,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3897270236860573,
+        "accuracy": 0.8138888888888889,
+        "precision": 0.8319672131147541,
+        "recall": 0.8864628820960698,
+        "macro_f1": 0.7935479453227311,
+        "false_positive_rate": 0.31297709923664124,
+        "attack_recall": 0.8864628820960698
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7955555555555556,
+          0.8316666666666667
+        ],
+        "false_positive_rate": [
+          0.2781705567943704,
+          0.3496204221192294
+        ]
+      }
+    },
+    {
+      "seed": 26,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 19.17111527309108,
+        "accuracy": 0.2461111111111111,
+        "precision": 0.3891213389121339,
+        "recall": 0.32489082969432315,
+        "macro_f1": 0.22442345349065013,
+        "false_positive_rate": 0.8916030534351145,
+        "attack_recall": 0.32489082969432315
+      },
+      "test_ci": {
+        "accuracy": [
+          0.22554166666666667,
+          0.2655694444444444
+        ],
+        "false_positive_rate": [
+          0.8682161733615222,
+          0.9158067219994842
+        ]
+      }
+    },
+    {
+      "seed": 26,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4739843668331268,
+        "accuracy": 0.7955555555555556,
+        "precision": 0.8240200166805671,
+        "recall": 0.862882096069869,
+        "macro_f1": 0.7750048911980174,
+        "false_positive_rate": 0.32213740458015266,
+        "attack_recall": 0.862882096069869
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7772222222222223,
+          0.815
+        ],
+        "false_positive_rate": [
+          0.28612944432616566,
+          0.35838230138406196
+        ]
+      }
+    },
+    {
+      "seed": 26,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.4947635108646331,
+        "accuracy": 0.7761111111111111,
+        "precision": 0.8248686514886164,
+        "recall": 0.8227074235807861,
+        "macro_f1": 0.7584279634784641,
+        "false_positive_rate": 0.3053435114503817,
+        "attack_recall": 0.8227074235807861
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7566666666666667,
+          0.7961111111111111
+        ],
+        "false_positive_rate": [
+          0.2695150774704982,
+          0.33998836286504075
+        ]
+      }
+    },
+    {
+      "seed": 27,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.37208954122887067,
+        "accuracy": 0.8466666666666667,
+        "precision": 0.843213728549142,
+        "recall": 0.9351211072664359,
+        "macro_f1": 0.8246354691001201,
+        "false_positive_rate": 0.31211180124223603,
+        "attack_recall": 0.9351211072664359
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8305555555555556,
+          0.8616666666666667
+        ],
+        "false_positive_rate": [
+          0.2761182584012453,
+          0.3450458473740916
+        ]
+      }
+    },
+    {
+      "seed": 27,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.923689998664187,
+        "accuracy": 0.275,
+        "precision": 0.4187568157033806,
+        "recall": 0.33217993079584773,
+        "macro_f1": 0.25793033643334595,
+        "false_positive_rate": 0.827639751552795,
+        "attack_recall": 0.33217993079584773
+      },
+      "test_ci": {
+        "accuracy": [
+          0.2544444444444444,
+          0.29555555555555557
+        ],
+        "false_positive_rate": [
+          0.7984280972334411,
+          0.8577985235091743
+        ]
+      }
+    },
+    {
+      "seed": 27,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4521137818074496,
+        "accuracy": 0.8344444444444444,
+        "precision": 0.852796052631579,
+        "recall": 0.8970588235294118,
+        "macro_f1": 0.8158483062438547,
+        "false_positive_rate": 0.2779503105590062,
+        "attack_recall": 0.8970588235294118
+      },
+      "test_ci": {
+        "accuracy": [
+          0.8172222222222222,
+          0.8500138888888888
+        ],
+        "false_positive_rate": [
+          0.24382224581269168,
+          0.31199226343359904
+        ]
+      }
+    },
+    {
+      "seed": 27,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5048979456881114,
+        "accuracy": 0.8,
+        "precision": 0.8856589147286822,
+        "recall": 0.7906574394463668,
+        "macro_f1": 0.7902543360384482,
+        "false_positive_rate": 0.18322981366459629,
+        "attack_recall": 0.7906574394463668
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7816666666666666,
+          0.8183333333333334
+        ],
+        "false_positive_rate": [
+          0.15483492943548388,
+          0.21129423303759168
+        ]
+      }
+    },
+    {
+      "seed": 28,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.3899269753391563,
+        "accuracy": 0.815,
+        "precision": 0.8280871670702179,
+        "recall": 0.8952879581151832,
+        "macro_f1": 0.7931516422082461,
+        "false_positive_rate": 0.3256880733944954,
+        "attack_recall": 0.8952879581151832
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7977638888888889,
+          0.8327777777777777
+        ],
+        "false_positive_rate": [
+          0.28955425050543954,
+          0.36020709167489207
+        ]
+      }
+    },
+    {
+      "seed": 28,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 19.231302719138434,
+        "accuracy": 0.2477777777777778,
+        "precision": 0.39166666666666666,
+        "recall": 0.32809773123909247,
+        "macro_f1": 0.22539159486950652,
+        "false_positive_rate": 0.8929663608562691,
+        "attack_recall": 0.32809773123909247
+      },
+      "test_ci": {
+        "accuracy": [
+          0.22833333333333333,
+          0.2677777777777778
+        ],
+        "false_positive_rate": [
+          0.8694345309701393,
+          0.9156682805990316
+        ]
+      }
+    },
+    {
+      "seed": 28,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4677553694301259,
+        "accuracy": 0.8088888888888889,
+        "precision": 0.8415672913117547,
+        "recall": 0.8621291448516579,
+        "macro_f1": 0.7914870689655172,
+        "false_positive_rate": 0.28440366972477066,
+        "attack_recall": 0.8621291448516579
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7905555555555556,
+          0.8272222222222222
+        ],
+        "false_positive_rate": [
+          0.24883046003480924,
+          0.3176690796716927
+        ]
+      }
+    },
+    {
+      "seed": 28,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.4961061348554788,
+        "accuracy": 0.7777777777777778,
+        "precision": 0.8951271186440678,
+        "recall": 0.7373472949389179,
+        "macro_f1": 0.7718558889698659,
+        "false_positive_rate": 0.15137614678899083,
+        "attack_recall": 0.7373472949389179
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7583333333333333,
+          0.796125
+        ],
+        "false_positive_rate": [
+          0.1227513221731719,
+          0.1790620272490455
+        ]
+      }
+    },
+    {
+      "seed": 29,
+      "arm": "A_clean",
+      "scenario": "Normal FedAvg",
+      "test": {
+        "loss": 0.40511025881539764,
+        "accuracy": 0.8055555555555556,
+        "precision": 0.822061191626409,
+        "recall": 0.8878260869565218,
+        "macro_f1": 0.781971915214069,
+        "false_positive_rate": 0.34,
+        "attack_recall": 0.8878260869565218
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7866666666666666,
+          0.8227916666666667
+        ],
+        "false_positive_rate": [
+          0.3038039566283841,
+          0.37867258142139215
+        ]
+      }
+    },
+    {
+      "seed": 29,
+      "arm": "B_poisoned",
+      "scenario": "Poisoned FedAvg",
+      "test": {
+        "loss": 18.10840809844188,
+        "accuracy": 0.28555555555555556,
+        "precision": 0.4306122448979592,
+        "recall": 0.36695652173913046,
+        "macro_f1": 0.26070709974130496,
+        "false_positive_rate": 0.8584615384615385,
+        "attack_recall": 0.36695652173913046
+      },
+      "test_ci": {
+        "accuracy": [
+          0.26555555555555554,
+          0.3055555555555556
+        ],
+        "false_positive_rate": [
+          0.8315006228156102,
+          0.8858576865155278
+        ]
+      }
+    },
+    {
+      "seed": 29,
+      "arm": "C_trust",
+      "scenario": "TrustFed-Sec",
+      "test": {
+        "loss": 0.4894978876442284,
+        "accuracy": 0.7816666666666666,
+        "precision": 0.8215802888700084,
+        "recall": 0.8408695652173913,
+        "macro_f1": 0.7611967304814449,
+        "false_positive_rate": 0.3230769230769231,
+        "attack_recall": 0.8408695652173913
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7622083333333334,
+          0.7994583333333333
+        ],
+        "false_positive_rate": [
+          0.2889151850808082,
+          0.36242959293969523
+        ]
+      }
+    },
+    {
+      "seed": 29,
+      "arm": "D_guard",
+      "scenario": "TrustFed-Sec (FPR guard)",
+      "test": {
+        "loss": 0.5268530141338195,
+        "accuracy": 0.7372222222222222,
+        "precision": 0.8635875402792696,
+        "recall": 0.6991304347826087,
+        "macro_f1": 0.7306581791619781,
+        "false_positive_rate": 0.19538461538461538,
+        "attack_recall": 0.6991304347826087
+      },
+      "test_ci": {
+        "accuracy": [
+          0.7177777777777777,
+          0.7572222222222222
+        ],
+        "false_positive_rate": [
+          0.1642967163168585,
+          0.2266921966178397
+        ]
+      }
+    }
+  ],
+  "seconds": 159.51407268500043
+}
